@@ -1,5 +1,5 @@
 module.exports = {
-    plugins: ['security', 'jest', 'mocha', 'promise'],
+  Aplugins: ['security', 'jest', 'mocha', 'promise'],
     extends: [
         'airbnb-base',
         'plugin:security/recommended',

@@ -18,7 +18,7 @@ const unhandledRejectionHandler = (reason, p) => {
   winston.error({ reason, message: "Unhandled Rejection at Promise", p });
 };
 
-const uncaughtExceptionHandler = err => {
+const uncaughtExceptionHandler = (err) => {
   winston.error(err);
   exitProcess();
 };
@@ -34,9 +34,9 @@ const errorDecorator = (err, req, res, next) => {
       isDeveloperError: err.isDeveloperError || serverErrorWithStack || nonBoomNoStatusCode,
       originalUrl: req.originalUrl,
       method: req.method,
-      ip: req.ip
+      ip: req.ip,
     },
-    data: { stack: err.stack || "n/a" }
+    data: { stack: err.stack || "n/a" },
   };
 
   boom.boomify(err, options);
@@ -60,5 +60,5 @@ module.exports = {
   finalErrorHandler,
   notFoundErrorHandler,
   uncaughtExceptionHandler,
-  unhandledRejectionHandler
+  unhandledRejectionHandler,
 };
